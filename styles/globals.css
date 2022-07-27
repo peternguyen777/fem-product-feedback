@@ -1,26 +1,43 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   html {
-    color-scheme: dark;
+    @apply overflow-hidden;
   }
-  body {
-    color: white;
-    background: black;
+
+  h1 {
+    @apply font-jost text-[24px] font-bold leading-[35px] tracking-[-0.33px];
+  }
+
+  h2 {
+    @apply font-jost text-[20px] font-bold leading-[29px] tracking-[-0.25px];
+  }
+
+  h3 {
+    @apply font-jost text-[18px] font-bold leading-[26px] tracking-[-0.25px];
+  }
+
+  h4 {
+    @apply font-jost text-[14px] font-bold leading-[20px] tracking-[-0.2px];
+  }
+
+  p {
+    @apply font-jost;
+  }
+}
+
+@layer components {
+  .body1 {
+    @apply text-[16px] font-normal leading-[23px];
+  }
+
+  .body2 {
+    @apply text-[15px] font-normal leading-[22px];
+  }
+
+  .body3 {
+    @apply text-[13px] font-semibold leading-[19px];
   }
 }
