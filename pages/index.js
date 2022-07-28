@@ -9,6 +9,7 @@ import { sortFunction } from "../components/sort/sort";
 
 //import json data
 import data from "../public/data.json";
+import NoFeedback from "../components/suggestions/NoFeedback";
 
 export default function Home() {
   const [mobMenuOpen, setMobMenuOpen] = useState(false);
@@ -20,6 +21,8 @@ export default function Home() {
     const input = data.productRequests;
     return sortFunction(input, filterSelect, categorySelect);
   }, [filterSelect, categorySelect]);
+
+  console.log(sortedRequests);
 
   return (
     <div className='relative flex h-screen flex-col'>
@@ -34,7 +37,6 @@ export default function Home() {
         categorySelect={categorySelect}
         setCategorySelect={setCategorySelect}
       />
-
       <Header mobMenuOpen={mobMenuOpen} setMobMenuOpen={setMobMenuOpen} />
       <SortBar
         filterMenuOpen={filterMenuOpen}
@@ -45,14 +47,19 @@ export default function Home() {
 
       <main className='bg-lightgray' onClick={() => setFilterMenuOpen(false)}>
         <ul className='mx-6 mt-8 mb-14 space-y-4'>
-          {sortedRequests.map((product) => (
-            <li key={product.id}>
-              <CardSuggestions
-                productData={product}
-                setCategorySelect={setCategorySelect}
-              />
-            </li>
-          ))}
+          {sortedRequests.length === 0 ? (
+            <NoFeedback />
+          ) : (
+            sortedRequests.map((product) => (
+              <li key={product.id}>
+                <CardSuggestions
+                  productData={product}
+                  setCategorySelect={setCategorySelect}
+                  setMobMenuOpen={setMobMenuOpen}
+                />
+              </li>
+            ))
+          )}
         </ul>
       </main>
       <div
