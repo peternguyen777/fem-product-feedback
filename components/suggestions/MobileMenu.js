@@ -13,7 +13,7 @@ export default function MobileMenu({ mobMenuOpen, setMobMenuOpen }) {
   const modalContent = (
     <>
       <div
-        className={`fixed right-0 top-[72px] z-30 h-full w-[270px] bg-lightgray p-6 ${
+        className={`fixed right-0 top-[72px] z-30 h-full w-[270px] select-none bg-lightgray p-6 ${
           mobMenuOpen ? "translate-x-0" : "translate-x-full"
         } duration-300 ease-in-out`}
       >
