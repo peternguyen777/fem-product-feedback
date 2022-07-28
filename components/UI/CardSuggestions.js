@@ -9,7 +9,7 @@ function CardSuggestions({ productData, setCategorySelect, setMobMenuOpen }) {
   }
 
   return (
-    <div className='cursor-pointer bg-white p-6'>
+    <div className='cursor-pointer rounded-[10px] bg-white p-6'>
       <p className='body3 font-bold text-lightnavy'>{productData.title}</p>
       <p className='body3 my-2 font-normal text-gray'>
         {productData.description}
