@@ -11,58 +11,52 @@ export default function MobileMenu({ mobMenuOpen, setMobMenuOpen }) {
   }, []);
 
   const modalContent = (
-    <AnimatePresence>
-      {mobMenuOpen ? (
-        <motion.div
-          initial={{ x: 270, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: 270, opacity: 0 }}
-          transition={{
-            duration: 0.3,
-          }}
-          className='absolute right-0 top-[72px] z-30 flex h-full w-[270px] flex-col bg-lightgray p-6'
-        >
-          <section className='flex h-fit w-full flex-wrap gap-x-2 gap-y-[14px] rounded-[10px] bg-white p-6'>
-            <ButtonCategory>All</ButtonCategory>
-            <ButtonCategory>UI</ButtonCategory>
-            <ButtonCategory>UX</ButtonCategory>
-            <ButtonCategory>Enhancement</ButtonCategory>
-            <ButtonCategory>Bug</ButtonCategory>
-            <ButtonCategory>Feature</ButtonCategory>
-          </section>
+    <>
+      <div
+        className={`fixed right-0 top-[72px] z-30 h-full w-[270px] bg-lightgray p-6 ${
+          mobMenuOpen ? "translate-x-0" : "translate-x-full"
+        } duration-300 ease-in-out`}
+      >
+        <section className='flex h-fit w-full flex-wrap gap-x-2 gap-y-[14px] rounded-[10px] bg-white p-6'>
+          <ButtonCategory>All</ButtonCategory>
+          <ButtonCategory>UI</ButtonCategory>
+          <ButtonCategory>UX</ButtonCategory>
+          <ButtonCategory>Enhancement</ButtonCategory>
+          <ButtonCategory>Bug</ButtonCategory>
+          <ButtonCategory>Feature</ButtonCategory>
+        </section>
 
-          <section className='mt-6 rounded-[10px] bg-white p-6'>
+        <section className='mt-6 rounded-[10px] bg-white p-6'>
+          <div className='flex items-center justify-between'>
+            <h3 className='text-lightnavy'>Roadmap</h3>
+            <p className='body3 cursor-pointer text-blue underline'>View</p>
+          </div>
+          <div className='mt-6 space-y-2'>
             <div className='flex items-center justify-between'>
-              <h3 className='text-lightnavy'>Roadmap</h3>
-              <p className='body3 cursor-pointer text-blue underline'>View</p>
+              <div className='flex items-center'>
+                <div className='mr-4 h-2 w-2 rounded-full bg-melon' />
+                <p className='text-gray'>Planned</p>
+              </div>
+              <p className='font-bold text-gray'>2</p>
             </div>
-            <div className='mt-6 space-y-2'>
-              <div className='flex items-center justify-between'>
-                <div className='flex items-center'>
-                  <div className='mr-4 h-2 w-2 rounded-full bg-melon' />
-                  <p className='text-gray'>Planned</p>
-                </div>
-                <p className='font-bold text-gray'>2</p>
+            <div className='flex items-center justify-between'>
+              <div className='flex items-center'>
+                <div className='mr-4 h-2 w-2 rounded-full bg-blue' />
+                <p className='text-gray'>In-Progress</p>
               </div>
-              <div className='flex items-center justify-between'>
-                <div className='flex items-center'>
-                  <div className='mr-4 h-2 w-2 rounded-full bg-blue' />
-                  <p className='text-gray'>In-Progress</p>
-                </div>
-                <p className='font-bold text-gray'>3</p>
-              </div>
-              <div className='flex items-center justify-between'>
-                <div className='flex items-center'>
-                  <div className='mr-4 h-2 w-2 rounded-full bg-cyan' />
-                  <p className='text-gray'>Live</p>
-                </div>
-                <p className='font-bold text-gray'>1</p>
-              </div>
+              <p className='font-bold text-gray'>3</p>
             </div>
-          </section>
-        </motion.div>
-      ) : null}
-    </AnimatePresence>
+            <div className='flex items-center justify-between'>
+              <div className='flex items-center'>
+                <div className='mr-4 h-2 w-2 rounded-full bg-cyan' />
+                <p className='text-gray'>Live</p>
+              </div>
+              <p className='font-bold text-gray'>1</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 
   const underlayContent = (

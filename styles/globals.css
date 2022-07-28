@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  html {
+  /* html {
     @apply overflow-hidden;
-  }
+  } */
 
   h1 {
     @apply font-jost text-[24px] font-bold leading-[35px] tracking-[-0.33px];

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/future/image";
 import mobileHeader from "../../public/assets/suggestions/mobile/background-header.png";
-import { Fade as Hamburger } from "hamburger-react";
+import { Squash as Hamburger } from "hamburger-react";
 
 function Header({ mobMenuOpen, setMobMenuOpen }) {
   return (
@@ -21,9 +21,9 @@ function Header({ mobMenuOpen, setMobMenuOpen }) {
           toggled={mobMenuOpen}
           toggle={setMobMenuOpen}
           size={20}
-          direction='left'
           color='#fff'
           distance='lg'
+          duration={0.3}
         />
       </div>
     </header>
