@@ -17,8 +17,8 @@ function SortBar({ filterMenuOpen, setFilterMenuOpen }) {
   );
 
   return (
-    <div className='sticky top-[72px] flex h-14 w-full items-center bg-navy px-6'>
-      <div className='flex w-full items-center justify-between'>
+    <div className='sticky top-[72px] flex w-full items-center bg-navy px-6'>
+      <div className='flex h-14 w-full items-center justify-between'>
         <div
           className='flex cursor-pointer select-none items-center'
           onClick={() => {
