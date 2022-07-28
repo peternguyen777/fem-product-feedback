@@ -3,19 +3,19 @@ import ButtonCategory from "./ButtonCategory";
 import CommentsCount from "./CommentsCount";
 import UpvoteH from "./UpvoteH";
 
-function CardSuggestions({ productData }) {
+function CardSuggestions({ productData, setCategorySelect }) {
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   return (
-    <div className='bg-white p-6'>
+    <div className='cursor-pointer bg-white p-6'>
       <p className='body3 font-bold text-lightnavy'>{productData.title}</p>
       <p className='body3 my-2 font-normal text-gray'>
         {productData.description}
       </p>
 
-      <ButtonCategory>
+      <ButtonCategory setCategorySelect={setCategorySelect}>
         {capitalizeFirstLetter(productData.category)}
       </ButtonCategory>
 

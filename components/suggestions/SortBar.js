@@ -2,9 +2,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import Button1 from "../UI/Button1";
 
-function SortBar({ filterMenuOpen, setFilterMenuOpen }) {
-  const [filterSelect, setFilterSelect] = useState("Most Upvotes");
-
+function SortBar({
+  filterMenuOpen,
+  setFilterMenuOpen,
+  filterSelect,
+  setFilterSelect,
+}) {
   const tick = (
     <svg xmlns='http://www.w3.org/2000/svg' width='13' height='11'>
       <path

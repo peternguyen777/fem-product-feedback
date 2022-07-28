@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  /* html {
-    @apply overflow-hidden;
-  } */
+  html {
+    overflow-y: scroll;
+  }
 
   h1 {
     @apply font-jost text-[24px] font-bold leading-[35px] tracking-[-0.33px];

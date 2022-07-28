@@ -3,7 +3,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import ButtonCategory from "../UI/ButtonCategory";
 import ReactDOM from "react-dom";
 
-export default function MobileMenu({ mobMenuOpen, setMobMenuOpen }) {
+export default function MobileMenu({
+  mobMenuOpen,
+  setMobMenuOpen,
+  setCategorySelect,
+}) {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
@@ -18,12 +22,24 @@ export default function MobileMenu({ mobMenuOpen, setMobMenuOpen }) {
         } duration-300 ease-in-out`}
       >
         <section className='flex h-fit w-full flex-wrap gap-x-2 gap-y-[14px] rounded-[10px] bg-white p-6'>
-          <ButtonCategory>All</ButtonCategory>
-          <ButtonCategory>UI</ButtonCategory>
-          <ButtonCategory>UX</ButtonCategory>
-          <ButtonCategory>Enhancement</ButtonCategory>
-          <ButtonCategory>Bug</ButtonCategory>
-          <ButtonCategory>Feature</ButtonCategory>
+          <ButtonCategory setCategorySelect={setCategorySelect}>
+            All
+          </ButtonCategory>
+          <ButtonCategory setCategorySelect={setCategorySelect}>
+            UI
+          </ButtonCategory>
+          <ButtonCategory setCategorySelect={setCategorySelect}>
+            UX
+          </ButtonCategory>
+          <ButtonCategory setCategorySelect={setCategorySelect}>
+            Enhancement
+          </ButtonCategory>
+          <ButtonCategory setCategorySelect={setCategorySelect}>
+            Bug
+          </ButtonCategory>
+          <ButtonCategory setCategorySelect={setCategorySelect}>
+            Feature
+          </ButtonCategory>
         </section>
 
         <section className='mt-6 rounded-[10px] bg-white p-6'>
