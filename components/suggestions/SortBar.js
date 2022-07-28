@@ -20,7 +20,7 @@ function SortBar({
   );
 
   return (
-    <div className='sticky top-[72px] flex w-full items-center border-t border-navy bg-navy px-6'>
+    <div className='fixed top-[72px] flex w-full items-center border-t border-navy bg-navy px-6'>
       <div className='flex h-14 w-full items-center justify-between'>
         <div
           className='flex cursor-pointer select-none items-center'

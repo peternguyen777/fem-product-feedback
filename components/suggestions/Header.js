@@ -6,7 +6,7 @@ import { Squash as Hamburger } from "hamburger-react";
 
 function Header({ mobMenuOpen, setMobMenuOpen }) {
   return (
-    <header className='sticky top-0 z-[999] flex'>
+    <header className='fixed top-0 z-[999] flex w-full'>
       <Image
         src={mobileHeader}
         alt=''
