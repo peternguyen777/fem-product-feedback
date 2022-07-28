@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 @layer base {
-  .disable-select {
+  /* .disable-select {
+  } */
+
+  html {
+    overflow-y: scroll;
     user-select: none; /* standard */
     -moz-user-select: none; /* firefox specific */
     -webkit-user-select: none; /* Chrome, Opera and Safari*/
     -ms-user-select: none; /* IE, ms-edge */
-  }
-
-  html {
-    overflow-y: scroll;
   }
 
   h1 {
