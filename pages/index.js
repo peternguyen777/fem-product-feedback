@@ -22,8 +22,6 @@ export default function Home() {
     return sortFunction(input, filterSelect, categorySelect);
   }, [filterSelect, categorySelect]);
 
-  console.log(sortedRequests);
-
   return (
     <div className='relative flex h-screen flex-col'>
       <Head>

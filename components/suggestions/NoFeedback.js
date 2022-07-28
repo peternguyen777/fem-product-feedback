@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/future/image";
 import illustrationEmpty from "../../public/assets/suggestions/illustration-empty.svg";
 import Button1 from "../UI/Button1";
 
