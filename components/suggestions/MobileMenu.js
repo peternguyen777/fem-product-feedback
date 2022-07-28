@@ -22,22 +22,40 @@ export default function MobileMenu({
         } duration-300 ease-in-out`}
       >
         <section className='flex h-fit w-full flex-wrap gap-x-2 gap-y-[14px] rounded-[10px] bg-white p-6'>
-          <ButtonCategory setCategorySelect={setCategorySelect}>
+          <ButtonCategory
+            setCategorySelect={setCategorySelect}
+            setMobMenuOpen={setMobMenuOpen}
+          >
             All
           </ButtonCategory>
-          <ButtonCategory setCategorySelect={setCategorySelect}>
+          <ButtonCategory
+            setCategorySelect={setCategorySelect}
+            setMobMenuOpen={setMobMenuOpen}
+          >
             UI
           </ButtonCategory>
-          <ButtonCategory setCategorySelect={setCategorySelect}>
+          <ButtonCategory
+            setCategorySelect={setCategorySelect}
+            setMobMenuOpen={setMobMenuOpen}
+          >
             UX
           </ButtonCategory>
-          <ButtonCategory setCategorySelect={setCategorySelect}>
+          <ButtonCategory
+            setCategorySelect={setCategorySelect}
+            setMobMenuOpen={setMobMenuOpen}
+          >
             Enhancement
           </ButtonCategory>
-          <ButtonCategory setCategorySelect={setCategorySelect}>
+          <ButtonCategory
+            setCategorySelect={setCategorySelect}
+            setMobMenuOpen={setMobMenuOpen}
+          >
             Bug
           </ButtonCategory>
-          <ButtonCategory setCategorySelect={setCategorySelect}>
+          <ButtonCategory
+            setCategorySelect={setCategorySelect}
+            setMobMenuOpen={setMobMenuOpen}
+          >
             Feature
           </ButtonCategory>
         </section>

@@ -14,7 +14,7 @@ export default function Home() {
   const [mobMenuOpen, setMobMenuOpen] = useState(false);
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
   const [filterSelect, setFilterSelect] = useState("Most Upvotes");
-  const [categorySelect, setCategorySelect] = useState("bug");
+  const [categorySelect, setCategorySelect] = useState("all");
 
   const sortedRequests = useMemo(() => {
     const input = data.productRequests;

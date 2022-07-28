@@ -3,7 +3,7 @@ import ButtonCategory from "./ButtonCategory";
 import CommentsCount from "./CommentsCount";
 import UpvoteH from "./UpvoteH";
 
-function CardSuggestions({ productData, setCategorySelect }) {
+function CardSuggestions({ productData, setCategorySelect, setMobMenuOpen }) {
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -15,7 +15,10 @@ function CardSuggestions({ productData, setCategorySelect }) {
         {productData.description}
       </p>
 
-      <ButtonCategory setCategorySelect={setCategorySelect}>
+      <ButtonCategory
+        setCategorySelect={setCategorySelect}
+        setMobMenuOpen={setMobMenuOpen}
+      >
         {capitalizeFirstLetter(productData.category)}
       </ButtonCategory>
 
