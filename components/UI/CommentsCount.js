@@ -12,7 +12,11 @@ function CommentsCount({ commentsCount }) {
           fillRule='nonzero'
         />
       </svg>
-      <p className='body1 font-bold text-lightnavy group-active:text-white'>
+      <p
+        className={`body1 font-bold text-lightnavy group-active:text-white ${
+          commentsCount === 0 && `opacity-50`
+        }`}
+      >
         {commentsCount}
       </p>
     </div>

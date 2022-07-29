@@ -10,8 +10,7 @@
 
   html,
   body {
-    height: 100%;
-    margin: 0;
+    @apply m-0 h-full bg-lightgray;
   }
 
   h1 {

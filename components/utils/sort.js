@@ -1,4 +1,4 @@
-export const sortFunction = (input, filterSelect, categorySelect) => {
+export const sortRequests = (input, filterSelect, categorySelect) => {
   input.map((item) => {
     if (item.comments === undefined) {
       item.comments = [];

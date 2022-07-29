@@ -1,29 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React from "react";
+import Image from "next/future/image";
 import Link from "next/link";
 import ButtonCategory from "../UI/ButtonCategory";
-import ReactDOM from "react-dom";
+import tabletHeader from "../../public/assets/suggestions/tablet/background-header.png";
+import desktopHeader from "../../public/assets/suggestions/desktop/background-header.png";
 
-export default function MobileMenu({
-  mobMenuOpen,
-  setMobMenuOpen,
+function DesktopTabletHeader({
   categorySelect,
   setCategorySelect,
+  setMobMenuOpen,
 }) {
-  const [isBrowser, setIsBrowser] = useState(false);
-
-  useEffect(() => {
-    setIsBrowser(true);
-  }, []);
-
-  const modalContent = (
-    <>
-      <div
-        className={`fixed right-0 top-[72px] z-30 h-full w-[270px] select-none bg-lightgray p-6 ${
-          mobMenuOpen ? "translate-x-0" : "translate-x-full"
-        } duration-300 ease-in-out`}
-      >
-        <section className='flex h-fit w-full flex-wrap gap-x-2 gap-y-[14px] rounded-[10px] bg-white p-6'>
+  return (
+    <header className='mx-10 mt-14 hidden grid-cols-3 gap-x-[10px] md:grid lg:mx-0 lg:mt-0 lg:mr-10 lg:flex lg:w-[255px] lg:flex-col lg:space-y-4'>
+      <section className='relative rounded-[10px] lg:h-[137px]'>
+        <Image
+          src={tabletHeader}
+          alt=''
+          className='absolute z-10 h-full w-full rounded-[10px] object-cover lg:hidden'
+        />
+        <Image
+          src={desktopHeader}
+          alt=''
+          className='absolute z-10 hidden h-full w-full rounded-[10px] object-cover lg:inline-block'
+        />
+        <Link href='/'>
+          <div className='absolute left-6 bottom-6 z-10 cursor-pointer select-none'>
+            <h2 className='text-white'>Frontend Mentor</h2>
+            <p className='body2 text-white opacity-75'>Feedback Board</p>
+          </div>
+        </Link>
+      </section>
+      <section className='rounded-[10px] bg-white p-6'>
+        <div className='flex h-fit w-full flex-wrap gap-x-2 gap-y-[14px] bg-transparent'>
           <ButtonCategory
             setCategorySelect={setCategorySelect}
             setMobMenuOpen={setMobMenuOpen}
@@ -66,9 +74,10 @@ export default function MobileMenu({
           >
             Feature
           </ButtonCategory>
-        </section>
-
-        <section className='mt-6 rounded-[10px] bg-white p-6'>
+        </div>
+      </section>
+      <section className='rounded-[10px] bg-white'>
+        <div className='p-6 pt-[19px]'>
           <div className='flex items-center justify-between'>
             <h3 className='text-lightnavy'>Roadmap</h3>
             <Link href='/roadmap/'>
@@ -98,42 +107,10 @@ export default function MobileMenu({
               <p className='body1 font-bold text-gray'>1</p>
             </div>
           </div>
-        </section>
-      </div>
-    </>
+        </div>
+      </section>
+    </header>
   );
-
-  const underlayContent = (
-    <AnimatePresence>
-      {mobMenuOpen ? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          exit={{ opacity: 0 }}
-          transition={{
-            duration: 0.2,
-          }}
-          className='fixed top-0 z-20 h-full w-full bg-black opacity-50'
-          onClick={() => setMobMenuOpen(false)}
-        ></motion.div>
-      ) : null}
-    </AnimatePresence>
-  );
-
-  if (isBrowser) {
-    return (
-      <React.Fragment>
-        {ReactDOM.createPortal(
-          underlayContent,
-          document.getElementById("mobMenu-root")
-        )}
-        {ReactDOM.createPortal(
-          modalContent,
-          document.getElementById("mobMenu-root")
-        )}
-      </React.Fragment>
-    );
-  } else {
-    return null;
-  }
 }
+
+export default DesktopTabletHeader;

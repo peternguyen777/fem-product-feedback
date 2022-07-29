@@ -1,29 +1,36 @@
 import React from "react";
-import ButtonCategory from "./ButtonCategory";
+import TagCategory from "./TagCategory";
 import CommentsCount from "./CommentsCount";
 import UpvoteH from "./UpvoteH";
+import UpvoteV from "./UpvoteV";
+import { capitalizeFirstLetter } from "../utils/capitalize";
 
 function CardSuggestions({ productData, setCategorySelect, setMobMenuOpen }) {
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   return (
-    <div className='-z-10 cursor-pointer rounded-[10px] bg-white p-6'>
-      <p className='body3 font-bold text-lightnavy'>{productData.title}</p>
-      <p className='body3 my-2 font-normal text-gray'>
-        {productData.description}
-      </p>
+    <div className='cursor-pointer rounded-[10px] bg-white p-6 md:flex md:items-center md:justify-between md:px-8 md:py-[28px]'>
+      <div className='flex items-start'>
+        <UpvoteV upvoteScore={productData.upvotes} />
+        <div className='md:ml-10'>
+          <p className='body3 font-bold text-lightnavy md:hidden'>
+            {productData.title}
+          </p>
+          <h3 className='hidden text-lightnavy md:block'>
+            {productData.title}
+          </h3>
+          <p className='body3 md:body1 my-2 font-normal text-gray md:mt-1 md:mb-3'>
+            {productData.description}
+          </p>
 
-      <ButtonCategory
-        setCategorySelect={setCategorySelect}
-        setMobMenuOpen={setMobMenuOpen}
-      >
-        {capitalizeFirstLetter(productData.category)}
-      </ButtonCategory>
+          <TagCategory>
+            {capitalizeFirstLetter(productData.category)}
+          </TagCategory>
+        </div>
+      </div>
 
-      <div className='mt-4 flex items-center justify-between'>
-        <UpvoteH upvoteScore={productData.upvotes} />
+      <div className='mt-4 flex items-center justify-between md:mt-0'>
+        <div className='md:hidden'>
+          <UpvoteH upvoteScore={productData.upvotes} />
+        </div>
         <CommentsCount commentsCount={productData.comments?.length || 0} />
       </div>
     </div>
