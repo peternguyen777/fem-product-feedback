@@ -54,16 +54,28 @@ function Roadmap() {
         </div>
         <ul className='mb-[98px] space-y-4'>
           {filterRoadmap === "Planned" &&
-            reqPlanned.map((item) => (
-              <CardRoadmap itemData={item} filterRoadmap={filterRoadmap} />
+            reqPlanned.map((item, i) => (
+              <CardRoadmap
+                key={i}
+                itemData={item}
+                filterRoadmap={filterRoadmap}
+              />
             ))}
           {filterRoadmap === "In-Progress" &&
-            reqProgress.map((item) => (
-              <CardRoadmap itemData={item} filterRoadmap={filterRoadmap} />
+            reqProgress.map((item, i) => (
+              <CardRoadmap
+                key={i}
+                itemData={item}
+                filterRoadmap={filterRoadmap}
+              />
             ))}
           {filterRoadmap === "Live" &&
-            reqLive.map((item) => (
-              <CardRoadmap itemData={item} filterRoadmap={filterRoadmap} />
+            reqLive.map((item, i) => (
+              <CardRoadmap
+                key={i}
+                itemData={item}
+                filterRoadmap={filterRoadmap}
+              />
             ))}
         </ul>
       </section>
