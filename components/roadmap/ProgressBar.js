@@ -8,7 +8,7 @@ function ProgressBar({
   reqLive,
 }) {
   return (
-    <div className='grid h-[59px] select-none grid-cols-3 border-b border-[#8C92B3] border-opacity-25'>
+    <div className='grid h-[59px] select-none grid-cols-3 border-b border-[#8C92B3] border-opacity-25 md:hidden'>
       <div
         className='group relative mt-5 cursor-pointer'
         onClick={() => setFilterRoadmap("Planned")}

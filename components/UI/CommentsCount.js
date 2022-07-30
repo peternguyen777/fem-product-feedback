@@ -2,7 +2,7 @@ import React from "react";
 
 function CommentsCount({ commentsCount }) {
   return (
-    <div className='flex items-center space-x-1'>
+    <div className='flex items-center space-x-1 lg:space-x-2'>
       <svg
         xmlns='http://www.w3.org/2000/svg'
         className='h-4 w-[18px] fill-current text-[#CDD2EE]'
@@ -13,7 +13,7 @@ function CommentsCount({ commentsCount }) {
         />
       </svg>
       <p
-        className={`body1 font-bold text-lightnavy group-active:text-white ${
+        className={`body3 lg:body1 font-bold text-lightnavy group-active:text-white lg:font-bold ${
           commentsCount === 0 && `opacity-50`
         }`}
       >

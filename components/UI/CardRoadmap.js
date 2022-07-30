@@ -16,7 +16,7 @@ function CardRoadmap({ itemData, filterRoadmap }) {
             : `bg-cyan`
         }`}
       />
-      <div className='p-6 pt-[22px]'>
+      <div className='p-6 pt-[22px] md:flex md:min-h-[251px] md:flex-col md:justify-between md:pt-[26px] lg:min-h-[272px] lg:p-8'>
         <div>
           <div className='flex items-center'>
             <div
@@ -30,15 +30,23 @@ function CardRoadmap({ itemData, filterRoadmap }) {
             />
             <p className='body3 text-gray'>{filterRoadmap}</p>
           </div>
+          <p className='body3 mt-4 font-bold text-lightnavy md:mt-[14px] lg:hidden'>
+            {itemData.title}
+          </p>
+          <h3 className='mt-2 hidden font-bold text-lightnavy hover:text-blue lg:block'>
+            {itemData.title}
+          </h3>
+          <p className='body3 lg:body1 mb-2 mt-[9px] font-normal text-gray md:mb-6 lg:mt-1 lg:mb-4'>
+            {itemData.description}
+          </p>
         </div>
-        <p className='body3 mt-4 font-bold text-lightnavy'>{itemData.title}</p>
-        <p className='body3 mb-2 mt-[9px] font-normal text-gray'>
-          {itemData.description}
-        </p>
-        <TagCategory>{capitalizeFirstLetter(itemData.category)}</TagCategory>
-        <div className='mt-4 flex items-center justify-between'>
-          <UpvoteH upvoteScore={itemData.upvotes} />
-          <CommentsCount commentsCount={itemData.comments?.length || 0} />
+
+        <div>
+          <TagCategory>{capitalizeFirstLetter(itemData.category)}</TagCategory>
+          <div className='mt-4 flex items-center justify-between'>
+            <UpvoteH upvoteScore={itemData.upvotes} />
+            <CommentsCount commentsCount={itemData.comments?.length || 0} />
+          </div>
         </div>
       </div>
     </li>
