@@ -1,10 +1,10 @@
 import React from "react";
-import Button1 from "../UI/Button1";
+import ButtonLink1 from "../UI/ButtonLink1";
 import Link from "next/link";
 
 function Header() {
   return (
-    <div className='w-full bg-navy px-6 md:mx-10 md:mt-14 md:w-auto md:rounded-[10px] md:px-8 lg:mt-[78px]'>
+    <div className='w-full bg-navy px-6 md:mx-10 md:mt-14 md:w-auto md:rounded-[10px] md:px-8 lg:mt-[94px]'>
       <div className='flex h-[100px] items-center justify-between md:h-[113px]'>
         <div className='space-y-1'>
           <Link href='/'>
@@ -22,7 +22,7 @@ function Header() {
           <h3 className='text-white md:hidden'>Roadmap</h3>
           <h1 className='hidden text-white md:block'>Roadmap</h1>
         </div>
-        <Button1>+ Add Feedback</Button1>
+        <ButtonLink1>+ Add Feedback</ButtonLink1>
       </div>
     </div>
   );

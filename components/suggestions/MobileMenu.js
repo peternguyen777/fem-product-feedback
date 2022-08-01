@@ -19,7 +19,7 @@ export default function MobileMenu({
   const modalContent = (
     <>
       <div
-        className={`fixed right-0 top-[72px] z-30 h-full w-[270px] select-none bg-lightgray p-6 ${
+        className={`fixed right-0 top-[72px] z-30 h-full w-[270px] select-none bg-lightgray p-6 md:hidden ${
           mobMenuOpen ? "translate-x-0" : "translate-x-full"
         } duration-300 ease-in-out`}
       >
@@ -113,7 +113,7 @@ export default function MobileMenu({
           transition={{
             duration: 0.2,
           }}
-          className='fixed top-0 z-20 h-full w-full bg-black opacity-50'
+          className='fixed top-0 z-20 h-full w-full bg-black opacity-50 md:hidden'
           onClick={() => setMobMenuOpen(false)}
         ></motion.div>
       ) : null}

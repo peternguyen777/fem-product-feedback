@@ -88,7 +88,7 @@ function Roadmap() {
             Planned ({reqPlanned.length})
           </h4>
           <h3 className='mb-1 hidden text-lightnavy lg:block'>
-            Live ({reqPlanned.length})
+            Planned ({reqPlanned.length})
           </h3>
           <h4 className='font-normal text-gray lg:hidden'>
             Ideas prioritized for research
@@ -141,6 +141,79 @@ function Roadmap() {
           </ul>
         </div>
       </section>
+
+      {/* <section className='mx-10 mt-8  hidden grid-cols-3 gap-x-[10px] md:grid lg:mt-12  lg:gap-x-[30px]'>
+        <div>
+          <h4 className='mb-1 text-lightnavy lg:hidden'>
+            Planned ({reqPlanned.length})
+          </h4>
+          <h3 className='mb-1 hidden text-lightnavy lg:block'>
+            Planned ({reqPlanned.length})
+          </h3>
+          <h4 className='font-normal text-gray lg:hidden'>
+            Ideas prioritized for research
+          </h4>
+          <p className='body1 hidden text-gray lg:block'>
+            Ideas prioritized for research
+          </p>
+        </div>
+        <div>
+          <h4 className='mb-1 text-lightnavy lg:hidden'>
+            In-Progress ({reqProgress.length})
+          </h4>
+          <h3 className='mb-1 hidden text-lightnavy lg:block'>
+            In-Progress ({reqProgress.length})
+          </h3>
+          <h4 className='font-normal text-gray lg:hidden'>
+            Currently being developed
+          </h4>
+          <p className='body1 hidden text-gray lg:block'>
+            Currently being developed
+          </p>
+        </div>
+        <div>
+          <h4 className='mb-1 text-lightnavy lg:hidden'>
+            Live ({reqLive.length})
+          </h4>
+          <h3 className='mb-1 hidden text-lightnavy lg:block'>
+            Live ({reqLive.length})
+          </h3>
+          <h4 className='font-normal text-gray lg:hidden'>Released features</h4>
+          <p className='body1 hidden text-gray lg:block'>Released features</p>
+        </div>
+      </section> */}
+
+      {/* <ul className='md:grid-auto-rows mx-10 mt-6 mb-[95px] hidden md:grid md:grid-cols-3 md:gap-x-[10px] md:gap-y-4 lg:mt-8 lg:mb-[180px] lg:gap-x-[30px] lg:gap-y-6'>
+        {reqPlanned.map((item, i) => (
+          <CardRoadmap key={i} itemData={item} filterRoadmap='Planned' />
+        ))}
+
+        {reqProgress.map((item, i) => (
+          <CardRoadmap key={i} itemData={item} filterRoadmap='In-Progress' />
+        ))}
+
+        {reqLive.map((item, i) => (
+          <CardRoadmap key={i} itemData={item} filterRoadmap='Live' />
+        ))}
+      </ul> */}
+
+      {/* <section className='mx-10 mt-6 mb-[95px] hidden md:grid md:grid-cols-3 md:space-x-[10px] lg:mt-8 lg:mb-[180px]  lg:space-x-[30px]'>
+        <ul className='md:space-y-4 lg:space-y-6'>
+          {reqPlanned.map((item, i) => (
+            <CardRoadmap key={i} itemData={item} filterRoadmap='Planned' />
+          ))}
+        </ul>
+        <ul className='md:space-y-4 lg:space-y-6'>
+          {reqProgress.map((item, i) => (
+            <CardRoadmap key={i} itemData={item} filterRoadmap='In-Progress' />
+          ))}
+        </ul>
+        <ul className='md:space-y-4 lg:space-y-6'>
+          {reqLive.map((item, i) => (
+            <CardRoadmap key={i} itemData={item} filterRoadmap='Live' />
+          ))}
+        </ul>
+      </section> */}
     </div>
   );
 }

@@ -31,7 +31,7 @@ function DesktopTabletHeader({
         </Link>
       </section>
       <section className='rounded-[10px] bg-white p-6'>
-        <div className='flex h-fit w-full flex-wrap gap-x-2 gap-y-[14px] bg-transparent'>
+        <div className='flex flex-wrap gap-x-2 gap-y-[14px] bg-transparent'>
           <ButtonCategory
             setCategorySelect={setCategorySelect}
             setMobMenuOpen={setMobMenuOpen}
@@ -77,14 +77,14 @@ function DesktopTabletHeader({
         </div>
       </section>
       <section className='rounded-[10px] bg-white'>
-        <div className='p-6 pt-[19px]'>
+        <div className='flex h-full flex-col justify-between px-6 pb-6 pt-[19px]'>
           <div className='flex items-center justify-between'>
             <h3 className='text-lightnavy'>Roadmap</h3>
             <Link href='/roadmap/'>
               <p className='body3 cursor-pointer text-blue underline'>View</p>
             </Link>
           </div>
-          <div className='mt-6 space-y-2'>
+          <div className='space-y-2 md:mt-0 lg:mt-6'>
             <div className='flex items-center justify-between'>
               <div className='flex items-center'>
                 <div className='mr-4 h-2 w-2 rounded-full bg-melon' />

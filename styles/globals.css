@@ -32,6 +32,18 @@
   p {
     @apply font-jost;
   }
+
+  input {
+    @apply h-12 w-full rounded-[5px] bg-lightgray px-6 font-jost text-[15px] font-normal leading-[22px] text-lightnavy outline-none focus:ring-1 focus:ring-blue;
+  }
+
+  textarea {
+    @apply block h-[120px] w-full resize-none rounded-[5px] bg-lightgray px-6 py-[13px] font-jost text-[15px] font-normal leading-[22px] text-lightnavy outline-none outline-none focus:ring-1 focus:ring-blue;
+  }
+
+  select {
+    @apply focus:ring-1 focus:ring-blue;
+  }
 }
 
 @layer components {
@@ -44,6 +56,6 @@
   }
 
   .body3 {
-    @apply text-[13px] font-semibold leading-[19px];
+    @apply text-[13px] font-bold leading-[19px];
   }
 }
