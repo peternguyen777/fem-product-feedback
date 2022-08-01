@@ -49,7 +49,10 @@ function Detail({ productRequest }) {
           const newPath = item.user.image.slice(1);
 
           return (
-            <div className='mb-6 border-b border-[#8C92B3] border-opacity-25 pb-6 last:mb-0 last:border-none last:pb-0'>
+            <div
+              key={item.id}
+              className='mb-6 border-b border-[#8C92B3] border-opacity-25 pb-6 last:mb-0 last:border-none last:pb-0'
+            >
               <div className='flex items-center justify-between '>
                 <div className='flex items-center'>
                   <Image
@@ -75,7 +78,7 @@ function Detail({ productRequest }) {
                 {item?.replies?.map((reply) => {
                   const newPathReplyUser = reply.user.image.slice(1);
                   return (
-                    <div className='mt-4 pl-6'>
+                    <div key={comment.id} className='mt-4 pl-6'>
                       <div className='flex items-center justify-between'>
                         <div className='flex items-center'>
                           <Image

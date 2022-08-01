@@ -67,7 +67,9 @@ function EditFeedback() {
               />
             </g>
           </svg>
-          <h3 className='text-lightnavy'>Editing 'Add a dark theme option'</h3>
+          <h3 className='text-lightnavy'>
+            Editing &apos;Add a dark theme option&apos;
+          </h3>
 
           <label htmlFor='title'>
             <p className='body3 mt-6 text-lightnavy md:hidden'>
