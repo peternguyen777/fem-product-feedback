@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-function Button1({ children, href, full }) {
+function Button3({ children, href, full }) {
   return (
     <Link href={href || ""}>
       <div
@@ -20,4 +20,4 @@ function Button1({ children, href, full }) {
   );
 }
 
-export default Button1;
+export default Button3;

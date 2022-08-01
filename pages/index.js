@@ -60,11 +60,7 @@ export default function Home() {
               ) : (
                 sortedRequests.map((product) => (
                   <li key={product.id}>
-                    <CardSuggestions
-                      productData={product}
-                      setCategorySelect={setCategorySelect}
-                      setMobMenuOpen={setMobMenuOpen}
-                    />
+                    <CardSuggestions productData={product} />
                   </li>
                 ))
               )}

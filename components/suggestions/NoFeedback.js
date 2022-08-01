@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/future/image";
 import illustrationEmpty from "../../public/assets/suggestions/illustration-empty.svg";
-import ButtonLink1 from "../UI/ButtonLink1";
+import Button1 from "../UI/Button1";
 
 function NoFeedback() {
   return (
@@ -19,7 +19,7 @@ function NoFeedback() {
         Got a suggestion? Found a bug that needs to be squashed? We love hearing
         about new ideas to improve our app.
       </p>
-      <ButtonLink1>+ Add Feedback</ButtonLink1>
+      <Button1>+ Add Feedback</Button1>
     </div>
   );
 }

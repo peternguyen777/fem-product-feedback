@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import TagCategory from "./TagCategory";
 import CommentsCount from "./CommentsCount";
 import UpvoteH from "./UpvoteH";
@@ -11,12 +12,16 @@ function CardSuggestions({ productData, setCategorySelect, setMobMenuOpen }) {
       <div className='flex items-start'>
         <UpvoteV upvoteScore={productData.upvotes} />
         <div className='md:ml-10'>
-          <p className='body3 font-bold text-lightnavy md:hidden'>
-            {productData.title}
-          </p>
-          <h3 className='hidden text-lightnavy md:block'>
-            {productData.title}
-          </h3>
+          <Link href={`/feedback/${productData.id}`}>
+            <p className='body3 font-bold text-lightnavy hover:text-blue md:hidden'>
+              {productData.title}
+            </p>
+          </Link>
+          <Link href={`/feedback/${productData.id}`}>
+            <h3 className='hidden text-lightnavy hover:text-blue md:block'>
+              {productData.title}
+            </h3>
+          </Link>
           <p className='body3 md:body1 my-2 font-normal text-gray md:mt-1 md:mb-3'>
             {productData.description}
           </p>

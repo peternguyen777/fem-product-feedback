@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
-import ButtonLink1 from "../UI/ButtonLink1";
+import Button1 from "../UI/Button1";
 
 function SortBar({
   filterMenuOpen,
@@ -73,7 +73,7 @@ function SortBar({
           </div>
         </div>
 
-        <ButtonLink1 href='/feedback/new/'>+ Add Feedback</ButtonLink1>
+        <Button1 href='/feedback/new/'>+ Add Feedback</Button1>
       </div>
 
       <AnimatePresence>

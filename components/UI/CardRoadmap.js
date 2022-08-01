@@ -1,6 +1,7 @@
 import React from "react";
 import TagCategory from "./TagCategory";
 import { capitalizeFirstLetter } from "../utils/capitalize";
+import Link from "next/link";
 import UpvoteH from "./UpvoteH";
 import CommentsCount from "./CommentsCount";
 
@@ -38,12 +39,16 @@ function CardRoadmap({ itemData, filterRoadmap }) {
             />
             <p className='body3 text-gray'>{filterRoadmap}</p>
           </div>
-          <p className='body3 mt-4 font-bold text-lightnavy md:mt-[14px] lg:hidden'>
-            {itemData.title}
-          </p>
-          <h3 className='mt-2 hidden font-bold text-lightnavy hover:text-blue lg:block'>
-            {itemData.title}
-          </h3>
+          <Link href={`/feedback/${itemData.id}`}>
+            <p className='body3 mt-4 cursor-pointer font-bold text-lightnavy hover:text-blue md:mt-[14px] lg:hidden'>
+              {itemData.title}
+            </p>
+          </Link>
+          <Link href={`/feedback/${itemData.id}`}>
+            <h3 className='mt-2 hidden cursor-pointer font-bold text-lightnavy hover:text-blue lg:block'>
+              {itemData.title}
+            </h3>
+          </Link>
           <p className='body3 lg:body1 mb-2 mt-[9px] font-normal text-gray md:mb-6 lg:mt-1 lg:mb-4'>
             {itemData.description}
           </p>

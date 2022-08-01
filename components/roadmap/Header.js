@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonLink1 from "../UI/ButtonLink1";
+import Button1 from "../UI/Button1";
 import Link from "next/link";
 
 function Header() {
@@ -22,7 +22,7 @@ function Header() {
           <h3 className='text-white md:hidden'>Roadmap</h3>
           <h1 className='hidden text-white md:block'>Roadmap</h1>
         </div>
-        <ButtonLink1>+ Add Feedback</ButtonLink1>
+        <Button1 href='/feedback/new/'>+ Add Feedback</Button1>
       </div>
     </div>
   );
