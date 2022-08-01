@@ -1,11 +1,15 @@
 import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import ButtonSubmit1 from "../../components/UI/ButtonSubmit1";
-import Button3 from "../../components/UI/Button3";
+import ButtonSubmit1 from "../../../components/UI/ButtonSubmit1";
+import Button3 from "../../../components/UI/Button3";
+import Button4 from "../../../components/UI/Button4";
 import { useForm } from "react-hook-form";
+import data from "../../../public/data.json"; //import json data
 
-function EditFeedback() {
+const productRequests = data.productRequests;
+
+function EditFeedback({ productRequest }) {
   const {
     register,
     handleSubmit,
@@ -68,7 +72,7 @@ function EditFeedback() {
             </g>
           </svg>
           <h3 className='text-lightnavy'>
-            Editing &apos;Add a dark theme option&apos;
+            Editing &apos;{productRequest.title}&apos;
           </h3>
 
           <label htmlFor='title'>
@@ -192,12 +196,16 @@ function EditFeedback() {
             <div onClick={() => router.back()}>
               <Button3 full>Cancel</Button3>
             </div>
+            <Button4 full>Delete</Button4>
           </div>
-          <div className='mt-8 hidden space-x-4 md:flex md:justify-end'>
-            <div onClick={() => router.back()}>
-              <Button3 full>Cancel</Button3>
+          <div className='mt-8 hidden md:flex md:justify-between'>
+            <Button4>Delete</Button4>
+            <div className='md:flex md:space-x-4'>
+              <div onClick={() => router.back()}>
+                <Button3 full>Cancel</Button3>
+              </div>
+              <ButtonSubmit1 submit>Add Feedback</ButtonSubmit1>
             </div>
-            <ButtonSubmit1 submit>Add Feedback</ButtonSubmit1>
           </div>
         </form>
       </div>
@@ -206,3 +214,24 @@ function EditFeedback() {
 }
 
 export default EditFeedback;
+
+export async function getStaticPaths() {
+  return {
+    fallback: false,
+    paths: productRequests.map((project) => ({
+      params: { editId: project.id.toString() },
+    })),
+  };
+}
+
+export async function getStaticProps(context) {
+  const editId = context.params.editId;
+
+  const selectedRequest = productRequests.find(({ id }) => id == editId);
+
+  return {
+    props: {
+      productRequest: selectedRequest,
+    },
+  };
+}

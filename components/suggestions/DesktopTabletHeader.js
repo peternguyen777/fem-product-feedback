@@ -11,7 +11,7 @@ function DesktopTabletHeader({
   setMobMenuOpen,
 }) {
   return (
-    <header className='mx-10 mt-14 hidden grid-cols-3 gap-x-[10px] md:grid lg:mx-0 lg:mt-0 lg:mr-10 lg:flex lg:w-[255px] lg:flex-col lg:space-y-4'>
+    <header className='mx-10 mt-14 hidden grid-cols-3 gap-x-[10px] md:grid lg:mx-0 lg:mt-0 lg:mr-[30px] lg:flex lg:w-[255px] lg:flex-col lg:space-y-4'>
       <section className='relative rounded-[10px] lg:h-[137px]'>
         <Image
           src={tabletHeader}
