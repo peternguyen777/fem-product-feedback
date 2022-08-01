@@ -75,10 +75,10 @@ function Detail({ productRequest }) {
               <p className='body3 mt-4 font-normal text-gray'>{item.content}</p>
 
               <div className='border-l border-[#8C92B3] border-opacity-25'>
-                {item?.replies?.map((reply) => {
+                {item?.replies?.map((reply, i) => {
                   const newPathReplyUser = reply.user.image.slice(1);
                   return (
-                    <div key={comment.id} className='mt-4 pl-6'>
+                    <div key={i} className='mt-4 pl-6'>
                       <div className='flex items-center justify-between'>
                         <div className='flex items-center'>
                           <Image
