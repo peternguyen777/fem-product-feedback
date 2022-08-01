@@ -7,7 +7,7 @@ import Button3 from "../../components/UI/Button3";
 
 import { useForm } from "react-hook-form";
 
-function newFeedback() {
+function NewFeedback() {
   const {
     register,
     handleSubmit,
@@ -148,4 +148,4 @@ function newFeedback() {
   );
 }
 
-export default newFeedback;
+export default NewFeedback;
