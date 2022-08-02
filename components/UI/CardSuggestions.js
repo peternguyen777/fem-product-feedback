@@ -8,17 +8,17 @@ import { capitalizeFirstLetter } from "../utils/capitalize";
 
 function CardSuggestions({ productData, setCategorySelect, setMobMenuOpen }) {
   return (
-    <div className='cursor-pointer rounded-[10px] bg-white p-6 md:flex md:items-center md:justify-between md:px-8 md:py-[28px]'>
+    <div className='rounded-[10px] bg-white p-6 md:flex md:items-center md:justify-between md:px-8 md:py-[28px]'>
       <div className='flex items-start'>
         <UpvoteV upvoteScore={productData.upvotes} />
         <div className='md:ml-10'>
           <Link href={`/feedback/${productData.id}`}>
-            <p className='body3 font-bold text-lightnavy hover:text-blue md:hidden'>
+            <p className='body3 cursor-pointer font-bold text-lightnavy hover:text-blue md:hidden'>
               {productData.title}
             </p>
           </Link>
           <Link href={`/feedback/${productData.id}`}>
-            <h3 className='hidden text-lightnavy hover:text-blue md:block'>
+            <h3 className='hidden cursor-pointer text-lightnavy hover:text-blue md:block'>
               {productData.title}
             </h3>
           </Link>

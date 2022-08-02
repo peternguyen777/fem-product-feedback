@@ -16,7 +16,7 @@ function ReplyComment({ setReplyOpen, replyingTo, userReplyingTo }) {
       reset();
       setReplyOpen(false);
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, setReplyOpen, reset]);
 
   const onSubmit = (data) => {
     if (replyingTo === "reply") {

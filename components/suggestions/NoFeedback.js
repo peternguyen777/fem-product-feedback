@@ -19,7 +19,7 @@ function NoFeedback() {
         Got a suggestion? Found a bug that needs to be squashed? We love hearing
         about new ideas to improve our app.
       </p>
-      <Button1>+ Add Feedback</Button1>
+      <Button1 href='/feedback/new/'>+ Add Feedback</Button1>
     </div>
   );
 }
