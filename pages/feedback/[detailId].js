@@ -9,7 +9,7 @@ const productRequests = data.productRequests;
 
 function Detail({ productRequest }) {
   return (
-    <section className='mx-auto mt-6 mb-[88px] max-w-[810px] px-6 md:mt-14 md:mb-[120px] md:px-10 lg:mb-[130px] lg:mt-[80px]'>
+    <section className='mx-auto mt-6 mb-[88px] max-w-[810px] px-6 md:mt-14 md:mb-[120px] md:px-10 lg:mb-[130px] lg:mt-[94px]'>
       <Header />
       <CardSuggestions productData={productRequest} />
       <Comments productData={productRequest} />

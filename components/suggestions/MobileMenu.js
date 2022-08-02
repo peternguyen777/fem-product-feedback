@@ -9,6 +9,7 @@ export default function MobileMenu({
   setMobMenuOpen,
   categorySelect,
   setCategorySelect,
+  roadmapCount,
 }) {
   const [isBrowser, setIsBrowser] = useState(false);
 
@@ -81,21 +82,27 @@ export default function MobileMenu({
                 <div className='mr-4 h-2 w-2 rounded-full bg-melon' />
                 <p className='body1 text-gray'>Planned</p>
               </div>
-              <p className='body1 font-bold text-gray'>2</p>
+              <p className='body1 font-bold text-gray'>
+                {roadmapCount?.countPlanned}
+              </p>
             </div>
             <div className='flex items-center justify-between'>
               <div className='flex items-center'>
                 <div className='mr-4 h-2 w-2 rounded-full bg-blue' />
                 <p className='body1 text-gray'>In-Progress</p>
               </div>
-              <p className='body1 font-bold text-gray'>3</p>
+              <p className='body1 font-bold text-gray'>
+                {roadmapCount?.countProgress}
+              </p>
             </div>
             <div className='flex items-center justify-between'>
               <div className='flex items-center'>
                 <div className='mr-4 h-2 w-2 rounded-full bg-cyan' />
                 <p className='body1 text-gray'>Live</p>
               </div>
-              <p className='body1 font-bold text-gray'>1</p>
+              <p className='body1 font-bold text-gray'>
+                {roadmapCount?.countLive}
+              </p>
             </div>
           </div>
         </section>

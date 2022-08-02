@@ -1,5 +1,5 @@
 import data from "../public/data.json"; //import json data
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Head from "next/head";
 import MobileHeader from "../components/suggestions/MobileHeader";
 import MobileMenu from "../components/suggestions/MobileMenu";
@@ -14,11 +14,30 @@ export default function Home() {
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
   const [filterSelect, setFilterSelect] = useState("Most Upvotes");
   const [categorySelect, setCategorySelect] = useState("all");
+  const [roadmapCount, setRoadmapCount] = useState();
 
   const sortedRequests = useMemo(() => {
     const input = data.productRequests;
     return sortRequests(input, filterSelect, categorySelect);
   }, [filterSelect, categorySelect]);
+
+  useEffect(() => {
+    var countPlanned = data.productRequests.filter(
+      (item) => item.status === "planned"
+    ).length;
+    var countProgress = data.productRequests.filter(
+      (item) => item.status === "in-progress"
+    ).length;
+    var countLive = data.productRequests.filter(
+      (item) => item.status === "live"
+    ).length;
+
+    setRoadmapCount({
+      countPlanned,
+      countProgress,
+      countLive,
+    });
+  }, [setRoadmapCount]);
 
   return (
     <div className='flex flex-col lg:mx-auto lg:max-w-[1190px] lg:px-10'>
@@ -33,6 +52,7 @@ export default function Home() {
         setMobMenuOpen={setMobMenuOpen}
         categorySelect={categorySelect}
         setCategorySelect={setCategorySelect}
+        roadmapCount={roadmapCount}
       />
 
       <MobileHeader mobMenuOpen={mobMenuOpen} setMobMenuOpen={setMobMenuOpen} />
@@ -43,6 +63,7 @@ export default function Home() {
           setMobMenuOpen={setMobMenuOpen}
           categorySelect={categorySelect}
           setCategorySelect={setCategorySelect}
+          roadmapCount={roadmapCount}
         />
         <div className='lg:inline-block lg:flex-1'>
           <SortBar

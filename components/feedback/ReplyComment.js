@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import ButtonSubmit1 from "../UI/ButtonSubmit1";
 import { useForm } from "react-hook-form";
 
-function ReplyComment({ setReplyOpen }) {
+function ReplyComment({ setReplyOpen, replyingTo, userReplyingTo }) {
   const {
     register,
     reset,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
@@ -18,20 +19,32 @@ function ReplyComment({ setReplyOpen }) {
   }, [isSubmitSuccessful, reset]);
 
   const onSubmit = (data) => {
+    if (replyingTo === "reply") {
+      data.replyToReply = `@${userReplyingTo} ` + data.replyToReply;
+    }
+
+    if (replyingTo === "comment") {
+      data.replyToComment = `@${userReplyingTo} ` + data.replyToComment;
+    }
+
     console.log(data);
   };
 
   return (
     <form
-      className='onSubmit mt-6 flex space-x-4 md:ml-[72px]'
+      className='mt-6 flex flex-col items-end space-y-4 md:ml-[72px] md:flex-row md:items-start md:space-y-0 md:space-x-4'
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className='relative w-full'>
         <textarea
-          {...register("commentReply", { required: "Can't be empty" })}
+          {...register(
+            `${replyingTo === "comment" ? `replyToComment` : `replyToReply`}`,
+            { required: "Can't be empty" }
+          )}
           maxLength={250}
           className={`h-[80px] ${
-            errors.commentReply && `ring-1 ring-[#D73737] focus:ring-[#D73737]`
+            (errors.replyToComment || errors.replyToReply) &&
+            `ring-1 ring-[#D73737] focus:ring-[#D73737]`
           }`}
           autoFocus
           onFocus={(e) =>
@@ -42,7 +55,8 @@ function ReplyComment({ setReplyOpen }) {
           }
         />
         <h4 className='absolute -bottom-1 translate-y-full font-normal text-[#D73737]'>
-          {errors.commentReply?.message}
+          {errors.replyToComment?.message}
+          {errors.replyToReply?.message}
         </h4>
       </div>
       <ButtonSubmit1 submit>Post Reply</ButtonSubmit1>
