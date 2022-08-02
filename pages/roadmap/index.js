@@ -20,7 +20,7 @@ function Roadmap() {
     setReqPlanned(planned);
     setReqProgress(progress);
     setReqLive(live);
-  }, [data]);
+  }, []);
 
   return (
     <div className='flex flex-col lg:mx-auto lg:max-w-[1190px]'>

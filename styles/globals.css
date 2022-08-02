@@ -60,6 +60,10 @@
   }
 
   .vert-hr-last:last-child .vert-hr-last-hidden {
-    display: none;
+    @apply hidden;
+  }
+
+  .vert-hr-last:last-child .vert-hr-last-mobile {
+    @apply h-[calc(100%)] md:hidden;
   }
 }
