@@ -58,4 +58,8 @@
   .body3 {
     @apply text-[13px] font-bold leading-[19px];
   }
+
+  .vert-hr-last:last-child .vert-hr-last-hidden {
+    display: none;
+  }
 }
