@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import ButtonSubmit1 from "../../components/UI/ButtonSubmit1";
 import Button3 from "../../components/UI/Button3";
 import { useForm } from "react-hook-form";
 
-import { ADD_FEEDBACK, GET_ALL_FEEDBACK } from "../../graphql/mutations";
+import { ADD_FEEDBACK } from "../../graphql/mutations";
+import { GET_ALL_FEEDBACK } from "../../graphql/queries";
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
 
