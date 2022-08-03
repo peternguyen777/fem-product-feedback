@@ -1,0 +1,333 @@
+type Comments {
+  content: String
+  created_at: DateTime
+  feedback: Feedback
+    @materializer(
+      query: "getFeedback"
+      arguments: [{ name: "id", field: "feedback_id" }]
+    )
+  feedback_id: ID
+  id: ID!
+  replyToCommentList: [ReplyToComment]
+    @materializer(query: "getReplyToCommentUsingComment_id")
+  user: User
+    @materializer(
+      query: "getUser"
+      arguments: [{ name: "id", field: "user_id" }]
+    )
+  user_id: ID
+}
+
+type Feedback {
+  category: String
+  commentsList: [Comments] @materializer(query: "getCommentsUsingFeedback_id")
+  created_at: DateTime
+  description: String
+  id: ID!
+  status: String
+  title: String
+  upvotes: ID
+  voteList: [Vote] @materializer(query: "getVoteUsingFeedback_id")
+}
+
+type ReplyToComment {
+  comment_id: ID
+  comments: Comments
+    @materializer(
+      query: "getComments"
+      arguments: [{ name: "id", field: "comment_id" }]
+    )
+  content: String
+  feedback_id: ID
+  created_at: DateTime
+  id: ID!
+  user: User
+    @materializer(
+      query: "getUser"
+      arguments: [{ name: "id", field: "user_id" }]
+    )
+  user_id: ID
+}
+
+type User {
+  commentsList: [Comments] @materializer(query: "getCommentsUsingUser_id")
+  created_at: DateTime
+  id: ID!
+  image: String
+  name: String
+  replyToCommentList: [ReplyToComment]
+    @materializer(query: "getReplyToCommentUsingUser_id")
+  username: String
+  voteList: [Vote] @materializer(query: "getVoteUsingUser_id")
+}
+
+type Vote {
+  created_at: DateTime
+  feedback: Feedback
+    @materializer(
+      query: "getFeedback"
+      arguments: [{ name: "id", field: "feedback_id" }]
+    )
+  feedback_id: ID
+  id: ID!
+  upvote: Boolean
+  user: User
+    @materializer(
+      query: "getUser"
+      arguments: [{ name: "id", field: "user_id" }]
+    )
+  user_id: ID
+}
+
+"""
+These are some examples of queries generated from the schema. Feel free to modify them or add your own.
+"""
+type Query {
+  getCommentsList: [Comments]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comments"
+      configuration: "postgresql_config"
+    )
+  getComments(id: ID!): Comments
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comments"
+      configuration: "postgresql_config"
+    )
+  getReplyToCommentUsingComment_id(id: ID!): [ReplyToComment]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      SELECT T."comment_id", T."content", T."created_at", T."id", T."user_id"
+        FROM "public"."replyToComment" T
+        WHERE T."comment_id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  getFeedbackList: [Feedback]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "feedback"
+      configuration: "postgresql_config"
+    )
+  getFeedback(id: ID!): Feedback
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "feedback"
+      configuration: "postgresql_config"
+    )
+  getCommentsUsingFeedback_id(id: ID!): [Comments]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      SELECT T."content", T."created_at", T."feedback_id", T."id", T."user_id"
+        FROM "public"."comments" T
+        WHERE T."feedback_id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  getVoteUsingFeedback_id(id: ID!): [Vote]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      SELECT T."created_at", T."feedback_id", T."id", T."upvote", T."user_id"
+        FROM "public"."vote" T
+        WHERE T."feedback_id" = $1
+        order by "created_at" desc
+      """
+      configuration: "postgresql_config"
+    )
+  getReplyToCommentList: [ReplyToComment]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "replyToComment"
+      configuration: "postgresql_config"
+    )
+  getReplyToComment(id: ID!): ReplyToComment
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "replyToComment"
+      configuration: "postgresql_config"
+    )
+  getUserList: [User]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "user"
+      configuration: "postgresql_config"
+    )
+  getUser(id: ID!): User
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "user"
+      configuration: "postgresql_config"
+    )
+  getCommentsUsingUser_id(id: ID!): [Comments]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      SELECT T."content", T."created_at", T."feedback_id", T."id", T."user_id"
+        FROM "public"."comments" T
+        WHERE T."user_id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  getReplyToCommentUsingUser_id(id: ID!): [ReplyToComment]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      SELECT T."comment_id", T."content", T."created_at", T."id", T."user_id"
+        FROM "public"."replyToComment" T
+        WHERE T."user_id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  getVoteUsingUser_id(id: ID!): [Vote]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      SELECT T."created_at", T."feedback_id", T."id", T."upvote", T."user_id"
+        FROM "public"."vote" T
+        WHERE T."user_id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  getVoteList: [Vote]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "vote"
+      configuration: "postgresql_config"
+    )
+  getVote(id: ID!): Vote
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "vote"
+      configuration: "postgresql_config"
+    )
+}
+
+"""
+These are some examples of mutations generated from the schema. Feel free to modify them or add your own.
+"""
+type Mutation {
+  insertComments(content: String!, feedback_id: ID!, user_id: ID!): Comments
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comments"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deleteComments(id: ID!): Comments
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comments"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  deleteAllCommentsByFeedbackId(feedback_id: ID!): [Comments]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comments"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertFeedback(
+    description: String!
+    category: String!
+    title: String!
+  ): Feedback
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "feedback"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deleteFeedback(id: ID!): Feedback
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "feedback"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertReplyToComment(
+    content: String!
+    user_id: ID!
+    comment_id: ID!
+    feedback_id: ID!
+  ): ReplyToComment
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "replyToComment"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deleteReplyToComment(id: ID!): ReplyToComment
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "replyToComment"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  deleteAllReplyToCommentsByFeedbackId(feedback_id: ID!): [ReplyToComment]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "replyToComment"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertUser(
+    image: String!
+    created_at: DateTime!
+    name: String!
+    username: String!
+  ): User
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "user"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deleteUser(id: ID!): User
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "user"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertVote(upvote: Boolean!, feedback_id: ID!, user_id: ID!): Vote
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "vote"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deleteVote(id: ID!): Vote
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "vote"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+}

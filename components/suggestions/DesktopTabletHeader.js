@@ -17,11 +17,13 @@ function DesktopTabletHeader({
         <Image
           src={tabletHeader}
           alt=''
+          priority
           className='absolute z-10 h-full w-full rounded-[10px] object-cover lg:hidden'
         />
         <Image
           src={desktopHeader}
           alt=''
+          priority
           className='absolute z-10 hidden h-full w-full rounded-[10px] object-cover lg:inline-block'
         />
         <Link href='/'>

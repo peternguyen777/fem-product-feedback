@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ButtonSubmit1 from "../../components/UI/ButtonSubmit1";
 import { useForm, useWatch } from "react-hook-form";
 
-function AddComment() {
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_FEEDBACK_BY_ID } from "../../graphql/queries";
+import { ADD_COMMENT } from "../../graphql/mutations";
+import { toast } from "react-hot-toast";
+
+function AddComment({ productData }) {
+  const [insertComments] = useMutation(ADD_COMMENT, {
+    refetchQueries: [GET_FEEDBACK_BY_ID, "getFeedback"],
+  });
+
   const {
     register,
     handleSubmit,
     control,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful },
   } = useForm({ mode: "all" });
 
   const addComment = useWatch({
@@ -18,9 +27,22 @@ function AddComment() {
 
   const charsRemaining = 250 - addComment?.length || 250;
 
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
+
+  const onSubmit = async (data) => {
+    const notification = toast.loading("Posting your comment...");
+    await insertComments({
+      variables: {
+        content: data.addcomment,
+        feedback_id: productData.id,
+        user_id: "11",
+      },
+    });
+    toast.success("Comment successfully posted!", { id: notification });
   };
 
   return (

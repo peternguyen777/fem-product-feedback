@@ -10,6 +10,7 @@ function MobileHeader({ mobMenuOpen, setMobMenuOpen }) {
       <Image
         src={mobileHeader}
         alt=''
+        priority
         className='absolute h-[72px] w-full object-cover'
       />
 

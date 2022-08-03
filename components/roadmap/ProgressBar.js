@@ -18,7 +18,7 @@ function ProgressBar({
             filterRoadmap !== "Planned" ? `opacity-40` : `opacity-100`
           }`}
         >
-          Planned ({reqPlanned.length || 0})
+          Planned ({reqPlanned?.length || 0})
         </p>
         <div
           className={`absolute -bottom-[1px] h-1 w-full bg-blue ${
@@ -35,7 +35,7 @@ function ProgressBar({
             filterRoadmap !== "In-Progress" ? `opacity-40` : `opacity-100`
           }`}
         >
-          In-In-Progress ({reqProgress.length || 0})
+          In-In-Progress ({reqProgress?.length || 0})
         </p>
         <div
           className={`absolute -bottom-[1px] h-1 w-full bg-blue ${
@@ -52,7 +52,7 @@ function ProgressBar({
             filterRoadmap !== "Live" ? `opacity-40` : `opacity-100`
           }`}
         >
-          Live ({reqLive.length || 0})
+          Live ({reqLive?.length || 0})
         </p>
         <div
           className={`absolute -bottom-[1px] h-1 w-full bg-blue ${

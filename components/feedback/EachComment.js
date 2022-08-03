@@ -9,10 +9,7 @@ function EachComment({ item }) {
   const newPath = item.user.image.slice(1);
 
   return (
-    <div
-      key={item.id}
-      className='relative mb-6 border-b border-[#8C92B3] border-opacity-25 pb-6 last:mb-0 last:border-none last:pb-0 md:mb-8 md:pb-8'
-    >
+    <div className='relative mb-6 border-b border-[#8C92B3] border-opacity-25 pb-6 last:mb-0 last:border-none last:pb-0 md:mb-8 md:pb-8'>
       <div className='flex items-center justify-between '>
         <div className='flex items-center'>
           <Image
@@ -44,28 +41,29 @@ function EachComment({ item }) {
         </p>
       </div>
 
-      <p className='body3 md:body2 relative mt-4 font-normal text-gray md:ml-[72px]'>
-        {item.content}
-        {item.replies && (
+      <div className='relative mt-4 md:ml-[72px]'>
+        <p className='body3 md:body2 font-normal text-gray'>{item.content}</p>
+        {item.replyToCommentList.length > 0 && (
           <div
             className={`absolute w-1 border-l border-[#8C92B3] border-opacity-25 md:-left-[52px] md:top-0 ${
               replyOpen ? `md:h-[calc(100%+156px)]` : `md:h-[calc(100%+52px)]`
             }`}
           />
         )}
-      </p>
+      </div>
 
       {replyOpen && (
         <ReplyComment
           setReplyOpen={setReplyOpen}
           replyingTo={replyingTo}
           userReplyingTo={item.user.username}
+          item={item}
         />
       )}
 
       <div className='md:ml-5'>
-        {item?.replies?.map((reply, i, replies) => (
-          <EachReply reply={reply} key={i} replies={replies} />
+        {item?.replyToCommentList?.map((reply, i, replies) => (
+          <EachReply reply={reply} key={i} replies={replies} item={item} />
         ))}
       </div>
     </div>

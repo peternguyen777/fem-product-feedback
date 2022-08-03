@@ -1,20 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import ButtonSubmit1 from "../../components/UI/ButtonSubmit1";
 import Button3 from "../../components/UI/Button3";
 import { useForm } from "react-hook-form";
 
+import { ADD_FEEDBACK, GET_ALL_FEEDBACK } from "../../graphql/mutations";
+import { useMutation } from "@apollo/client";
+import toast from "react-hot-toast";
+
 function NewFeedback() {
+  const [addFeedback] = useMutation(ADD_FEEDBACK, {
+    refetchQueries: [GET_ALL_FEEDBACK, "getFeedbackList"],
+  });
+
+  const router = useRouter();
+
+  const delay = (time) => {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  };
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm({ mode: "all" });
 
-  const onSubmit = (data) => console.log(data);
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
 
-  const router = useRouter();
+  const onSubmit = async (data) => {
+    const notification = toast.loading("Posting your feedback...");
+
+    await addFeedback({
+      variables: {
+        description: data.detail,
+        title: data.title,
+        category: data.category,
+      },
+    });
+
+    toast.success("Feedback successfully posted!", { id: notification });
+    router
+      .push("/")
+      .then(() => delay(2000))
+      .then(() => router.reload());
+  };
 
   return (
     <div className='mx-auto mt-[34px] mb-[78px] max-w-[588px] px-6 md:mt-14 md:mb-[223px] lg:mb-[187px] lg:mt-[92px]'>
@@ -117,11 +153,11 @@ function NewFeedback() {
               <option disabled value='' selected>
                 Choose an Option
               </option>
-              <option value='UI'>UI</option>
-              <option value='UX'>UX</option>
-              <option value='Enhancement'>Enhancement</option>
-              <option value='Bug'>Bug</option>
-              <option value='Feature'>Feature</option>
+              <option value='ui'>UI</option>
+              <option value='ui'>UX</option>
+              <option value='enhancement'>Enhancement</option>
+              <option value='bug'>Bug</option>
+              <option value='feature'>Feature</option>
             </select>
             <h4 className='absolute -bottom-1 translate-y-full font-normal text-[#D73737]'>
               {errors.category?.message}
@@ -160,6 +196,7 @@ function NewFeedback() {
             <ButtonSubmit1 full submit>
               Add Feedback
             </ButtonSubmit1>
+
             <div onClick={() => router.back()}>
               <Button3 full>Cancel</Button3>
             </div>
@@ -168,6 +205,7 @@ function NewFeedback() {
             <div onClick={() => router.back()}>
               <Button3 full>Cancel</Button3>
             </div>
+
             <ButtonSubmit1 submit>Add Feedback</ButtonSubmit1>
           </div>
         </form>

@@ -2,12 +2,20 @@ import React, { useEffect } from "react";
 import ButtonSubmit1 from "../UI/ButtonSubmit1";
 import { useForm } from "react-hook-form";
 
-function ReplyComment({ setReplyOpen, replyingTo, userReplyingTo }) {
+import { useMutation } from "@apollo/client";
+import { REPLY_TO_COMMENT } from "../../graphql/mutations";
+import { GET_FEEDBACK_BY_ID } from "../../graphql/queries";
+import { toast } from "react-hot-toast";
+
+function ReplyComment({ setReplyOpen, replyingTo, userReplyingTo, item }) {
+  const [insertReplyToComment] = useMutation(REPLY_TO_COMMENT, {
+    refetchQueries: [GET_FEEDBACK_BY_ID, "getFeedback"],
+  });
+
   const {
     register,
     reset,
     handleSubmit,
-    setValue,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
@@ -18,15 +26,23 @@ function ReplyComment({ setReplyOpen, replyingTo, userReplyingTo }) {
     }
   }, [isSubmitSuccessful, setReplyOpen, reset]);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    const notification = toast.loading("Posting your reply...");
     if (replyingTo === "reply") {
       data.replyToReply = `@${userReplyingTo} ` + data.replyToReply;
     }
-
     if (replyingTo === "comment") {
       data.replyToComment = `@${userReplyingTo} ` + data.replyToComment;
     }
-
+    await insertReplyToComment({
+      variables: {
+        content: data.replyToComment || data.replyToReply,
+        user_id: "11",
+        comment_id: item.id,
+        feedback_id: item.feedback_id,
+      },
+    });
+    toast.success("Reply successfully posted!", { id: notification });
     console.log(data);
   };
 

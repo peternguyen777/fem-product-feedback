@@ -1,8 +1,11 @@
 import React from "react";
 
-function UpvoteH({ upvoteScore }) {
+function UpvoteH({ upvoteScore, onClick }) {
   return (
-    <div className='group flex h-8 w-fit cursor-pointer select-none items-center rounded-[10px] bg-bluegray px-4 hover:bg-[#CFD7FF] active:bg-blue lg:h-10'>
+    <div
+      className='group flex h-8 w-fit cursor-pointer select-none items-center rounded-[10px] bg-bluegray px-4 hover:bg-[#CFD7FF] active:bg-blue lg:h-10'
+      onClick={onClick}
+    >
       <div className='flex items-center'>
         <svg
           xmlns='http://www.w3.org/2000/svg'

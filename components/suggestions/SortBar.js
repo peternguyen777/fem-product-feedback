@@ -35,7 +35,7 @@ function SortBar({
               />
             </svg>
             <h3 className='md:text-white'>
-              {sortedRequests.length} Suggestions
+              {sortedRequests?.length} Suggestions
             </h3>
           </div>
           <div

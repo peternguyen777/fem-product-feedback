@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Image from "next/future/image";
 import ReplyComment from "./ReplyComment";
+import {
+  removeFirstWord,
+  getFirstWord,
+} from "../../components/utils/firstWord";
 
-function EachReply({ reply, replies }) {
+function EachReply({ reply, replies, item }) {
   const [replyOpen, setReplyOpen] = useState(false);
   const [replyingTo, setReplyingTo] = useState("");
 
@@ -50,15 +54,16 @@ function EachReply({ reply, replies }) {
       </div>
       <p className='body3 md:body2 mt-4 font-normal text-gray md:pl-[72px]'>
         <span className='cursor-pointer font-bold text-blue'>
-          @{reply.replyingTo}{" "}
+          {getFirstWord(reply.content)}
         </span>
-        {reply.content}
+        {removeFirstWord(reply.content)}
       </p>
       {replyOpen && (
         <ReplyComment
           setReplyOpen={setReplyOpen}
           replyingTo={replyingTo}
           userReplyingTo={reply.user.username}
+          item={item}
         />
       )}
     </div>

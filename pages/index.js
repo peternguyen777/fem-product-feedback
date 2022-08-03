@@ -1,4 +1,3 @@
-import data from "../public/data.json"; //import json data
 import React, { useState, useMemo, useEffect } from "react";
 import Head from "next/head";
 import MobileHeader from "../components/suggestions/MobileHeader";
@@ -8,6 +7,12 @@ import CardSuggestions from "../components/UI/CardSuggestions";
 import NoFeedback from "../components/suggestions/NoFeedback";
 import { sortRequests } from "../components/utils/sort";
 import DesktopTabletHeader from "../components/suggestions/DesktopTabletHeader";
+import { useRouter } from "next/router";
+
+//graphql
+import { useQuery } from "@apollo/client";
+import { GET_ALL_FEEDBACK } from "../graphql/queries";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
 
 export default function Home() {
   const [mobMenuOpen, setMobMenuOpen] = useState(false);
@@ -16,28 +21,29 @@ export default function Home() {
   const [categorySelect, setCategorySelect] = useState("all");
   const [roadmapCount, setRoadmapCount] = useState();
 
+  const { data, error, loading } = useQuery(GET_ALL_FEEDBACK);
+  const dataFeedback = data?.getFeedbackList;
+
   const sortedRequests = useMemo(() => {
-    const input = data.productRequests;
+    const input = dataFeedback;
     return sortRequests(input, filterSelect, categorySelect);
-  }, [filterSelect, categorySelect]);
+  }, [dataFeedback, filterSelect, categorySelect]);
 
   useEffect(() => {
-    var countPlanned = data.productRequests.filter(
-      (item) => item.status === "planned"
-    ).length;
-    var countProgress = data.productRequests.filter(
-      (item) => item.status === "in-progress"
-    ).length;
-    var countLive = data.productRequests.filter(
-      (item) => item.status === "live"
-    ).length;
+    var countPlanned =
+      dataFeedback?.filter((item) => item.status === "planned").length || "-";
+    var countProgress =
+      dataFeedback?.filter((item) => item.status === "in-progress").length ||
+      "-";
+    var countLive =
+      dataFeedback?.filter((item) => item.status === "live").length || "-";
 
     setRoadmapCount({
       countPlanned,
       countProgress,
       countLive,
     });
-  }, [setRoadmapCount]);
+  }, [setRoadmapCount, data]);
 
   return (
     <div className='flex flex-col lg:mx-auto lg:max-w-[1190px] lg:px-10'>
@@ -75,17 +81,23 @@ export default function Home() {
           />
 
           <main className='' onClick={() => setFilterMenuOpen(false)}>
-            <ul className='mx-6 mt-8 mb-14 space-y-4 md:mx-10 md:mt-6 md:mb-[120px] lg:mx-0 lg:mt-6 lg:max-w-[825px] lg:space-y-5'>
-              {sortedRequests.length === 0 ? (
-                <NoFeedback />
-              ) : (
-                sortedRequests.map((product) => (
-                  <li key={product.id}>
-                    <CardSuggestions productData={product} />
-                  </li>
-                ))
-              )}
-            </ul>
+            {loading ? (
+              <div className='mt-[56px] flex justify-center md:mt-[70px]  lg:mt-[105px]'>
+                <LoadingSpinner />
+              </div>
+            ) : (
+              <ul className='mx-6 mt-8 mb-14 space-y-4 md:mx-10 md:mt-6 md:mb-[120px] lg:mx-0 lg:mt-6 lg:max-w-[825px] lg:space-y-5'>
+                {sortedRequests?.length === 0 ? (
+                  <NoFeedback />
+                ) : (
+                  sortedRequests?.map((product) => (
+                    <li key={product?.id}>
+                      <CardSuggestions productData={product} />
+                    </li>
+                  ))
+                )}
+              </ul>
+            )}
           </main>
         </div>
       </div>
