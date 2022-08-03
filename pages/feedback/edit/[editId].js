@@ -130,7 +130,9 @@ function EditFeedback() {
                 />
               </g>
             </svg>
-            <h3 className='text-lightnavy'>Editing '{editData?.title}'</h3>
+            <h3 className='text-lightnavy'>
+              Editing `&apos;`{editData?.title}`&apos;`
+            </h3>
 
             <label htmlFor='title'>
               <p className='body3 mt-6 text-lightnavy md:hidden'>
