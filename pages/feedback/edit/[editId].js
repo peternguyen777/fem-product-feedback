@@ -286,7 +286,7 @@ function EditFeedback() {
               </div>
               <div className='mt-10 w-full space-y-4 md:hidden'>
                 <ButtonSubmit1 full submit>
-                  Add Feedback
+                  Edit Feedback
                 </ButtonSubmit1>
                 <div onClick={() => router.back()}>
                   <Button3 href='/' full>
@@ -309,7 +309,7 @@ function EditFeedback() {
                       Cancel
                     </Button3>
                   </div>
-                  <ButtonSubmit1 submit>Add Feedback</ButtonSubmit1>
+                  <ButtonSubmit1 submit>Edit Feedback</ButtonSubmit1>
                 </div>
               </div>
             </form>
