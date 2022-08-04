@@ -1,6 +1,11 @@
 import React from "react";
 
 function CommentsCount({ commentsCount }) {
+  var commentsLength = commentsCount?.length || 0;
+  commentsCount?.map((item) => {
+    commentsLength += item.replyToCommentList?.length || 0;
+  });
+
   return (
     <div className='flex items-center space-x-1 lg:space-x-2'>
       <svg
@@ -14,10 +19,10 @@ function CommentsCount({ commentsCount }) {
       </svg>
       <p
         className={`body3 lg:body1 font-bold text-lightnavy group-active:text-white lg:font-bold ${
-          commentsCount === 0 && `opacity-50`
+          commentsLength === 0 && `opacity-50`
         }`}
       >
-        {commentsCount}
+        {commentsLength}
       </p>
     </div>
   );

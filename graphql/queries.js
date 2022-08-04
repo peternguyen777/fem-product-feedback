@@ -12,6 +12,12 @@ export const GET_ALL_FEEDBACK = gql`
       id
       commentsList {
         id
+        replyToCommentList {
+          id
+        }
+      }
+      voteList {
+        upvote
       }
     }
   }

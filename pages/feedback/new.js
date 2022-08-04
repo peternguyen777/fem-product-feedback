@@ -9,6 +9,7 @@ import { ADD_FEEDBACK } from "../../graphql/mutations";
 import { GET_ALL_FEEDBACK } from "../../graphql/queries";
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
+import Header from "../../components/feedback/edit/Header";
 
 function NewFeedback() {
   const [addFeedback] = useMutation(ADD_FEEDBACK, {
@@ -60,19 +61,7 @@ function NewFeedback() {
         <link rel='icon' href='/assets/favicon-32x32.png' />
       </Head>
 
-      <div
-        className='flex cursor-pointer items-center'
-        onClick={() => router.back()}
-      >
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          className='mr-4 h-[10px] w-[7px] stroke-blue stroke-2'
-        >
-          <path d='M6 9L2 5l4-4' fill='none' fillRule='evenodd' />
-        </svg>
-        <p className='body3 text-gray md:hidden'>Go Back</p>
-        <h4 className='hidden text-gray md:block'>Go Back</h4>
-      </div>
+      <Header />
 
       <div className='relative mt-[55px] rounded-[10px] bg-white p-6 pt-11 md:mt-[68px] md:px-[42px] md:pt-[52px] md:pb-10'>
         <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,9 +1,9 @@
 export function capitalizeFirstLetter(string) {
-  if (string.toLowerCase() === "ux") {
+  if (string?.toLowerCase() === "ux") {
     return "UX";
   }
 
-  if (string.toLowerCase() === "ui") {
+  if (string?.toLowerCase() === "ui") {
     return "UI";
   }
 

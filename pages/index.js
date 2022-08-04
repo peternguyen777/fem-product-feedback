@@ -7,9 +7,7 @@ import CardSuggestions from "../components/UI/CardSuggestions";
 import NoFeedback from "../components/suggestions/NoFeedback";
 import { sortRequests } from "../components/utils/sort";
 import DesktopTabletHeader from "../components/suggestions/DesktopTabletHeader";
-import { useRouter } from "next/router";
 
-//graphql
 import { useQuery } from "@apollo/client";
 import { GET_ALL_FEEDBACK } from "../graphql/queries";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
@@ -22,8 +20,7 @@ export default function Home() {
   const [roadmapCount, setRoadmapCount] = useState();
 
   const { data, error, loading } = useQuery(GET_ALL_FEEDBACK);
-  const dataFeedback = data?.getFeedbackList;
-  console.log(error);
+  var dataFeedback = data?.getFeedbackList;
 
   const sortedRequests = useMemo(() => {
     const input = dataFeedback;
@@ -83,7 +80,7 @@ export default function Home() {
 
           <main className='' onClick={() => setFilterMenuOpen(false)}>
             {loading ? (
-              <div className='mt-[56px] flex justify-center md:mt-[70px]  lg:mt-[105px]'>
+              <div className='mt-[106px] flex justify-center md:mt-[84px] lg:mt-[84px]'>
                 <LoadingSpinner />
               </div>
             ) : (

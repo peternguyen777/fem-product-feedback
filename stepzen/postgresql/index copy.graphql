@@ -330,12 +330,4 @@ type Mutation {
       dml: DELETE
       configuration: "postgresql_config"
     )
-  deleteAllVotesByFeedbackId(feedback_id: ID!): [Vote]
-    @dbquery(
-      type: "postgresql"
-      schema: "public"
-      table: "vote"
-      dml: DELETE
-      configuration: "postgresql_config"
-    )
 }

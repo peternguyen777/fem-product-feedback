@@ -6,6 +6,7 @@ import UpvoteH from "./UpvoteH";
 import UpvoteV from "./UpvoteV";
 import { capitalizeFirstLetter } from "../utils/capitalize";
 
+//graphQL
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_VOTE_BY_FEEDBACK_ID } from "../../graphql/queries";
 import { ADD_VOTE } from "../../graphql/mutations";
@@ -16,7 +17,7 @@ function CardSuggestions({ productData }) {
 
   const { data, error, loading } = useQuery(GET_VOTE_BY_FEEDBACK_ID, {
     variables: {
-      id: productData.id,
+      id: productData?.id,
     },
   });
 
@@ -43,7 +44,7 @@ function CardSuggestions({ productData }) {
       await insertVote({
         variables: {
           user_id: "11", //change this to a variable if adding Auth.
-          feedback_id: productData.id,
+          feedback_id: productData?.id,
           upvote: upVote,
         },
       });
@@ -102,7 +103,7 @@ function CardSuggestions({ productData }) {
             vote={vote}
           />
         </div>
-        <CommentsCount commentsCount={productData?.commentsList?.length || 0} />
+        <CommentsCount commentsCount={productData?.commentsList} />
       </div>
     </div>
   );

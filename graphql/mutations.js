@@ -63,6 +63,14 @@ export const REPLY_TO_COMMENT = gql`
   }
 `;
 
+export const DELETE_ALL_VOTES_BY_FEEDBACK_ID = gql`
+  mutation MyMutation($feedback_id: ID!) {
+    deleteAllVotesByFeedbackId(feedback_id: $feedback_id) {
+      id
+    }
+  }
+`;
+
 export const DELETE_ALL_REPLIES_BY_FEEDBACK_ID = gql`
   mutation MyMutation($feedback_id: ID!) {
     deleteAllReplyToCommentsByFeedbackId(feedback_id: $feedback_id) {
