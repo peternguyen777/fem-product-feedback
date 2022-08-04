@@ -23,6 +23,7 @@ export default function Home() {
 
   const { data, error, loading } = useQuery(GET_ALL_FEEDBACK);
   const dataFeedback = data?.getFeedbackList;
+  console.log(error);
 
   const sortedRequests = useMemo(() => {
     const input = dataFeedback;
