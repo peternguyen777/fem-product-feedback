@@ -338,4 +338,19 @@ type Mutation {
       dml: DELETE
       configuration: "postgresql_config"
     )
+
+  updateFeedback(
+    feedback_id: ID!
+    description: String!
+    category: String!
+    title: String!
+    status: String!
+  ): Feedback
+    @dbquery(
+      type: "postgresql"
+      query: """
+      UPDATE feedback SET description = $2, category = $3, title = $4, status = $5 WHERE id = $1
+      """
+      configuration: "postgresql_config"
+    )
 }

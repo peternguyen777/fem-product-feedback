@@ -3,7 +3,7 @@ import React from "react";
 function UpvoteV({ upvoteScore, vote, onClick }) {
   return (
     <div
-      className={`group hidden w-10 cursor-pointer select-none items-center rounded-[10px] pt-[14px] pb-2 active:bg-blue md:inline-flex ${
+      className={`group hidden w-10 flex-none cursor-pointer select-none items-center rounded-[10px] pt-[14px] pb-2 active:bg-blue md:inline-flex ${
         vote ? `bg-blue` : `bg-bluegray hover:bg-[#CFD7FF]`
       }`}
       onClick={onClick}

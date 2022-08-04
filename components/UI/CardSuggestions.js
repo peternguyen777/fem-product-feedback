@@ -95,7 +95,7 @@ function CardSuggestions({ productData }) {
         </div>
       </div>
 
-      <div className='mt-4 flex items-center justify-between md:mt-0'>
+      <div className='mt-4 flex items-center justify-between md:mt-0 md:ml-4'>
         <div className='md:hidden'>
           <UpvoteH
             upvoteScore={displayVotes() || productData?.upvotes}

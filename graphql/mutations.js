@@ -109,3 +109,23 @@ export const ADD_VOTE = gql`
     }
   }
 `;
+
+export const UPDATE_FEEDBACK = gql`
+  mutation MyMutation(
+    $feedback_id: ID!
+    $description: String!
+    $category: String!
+    $title: String!
+    $status: String!
+  ) {
+    updateFeedback(
+      feedback_id: $feedback_id
+      description: $description
+      category: $category
+      title: $title
+      status: $status
+    ) {
+      id
+    }
+  }
+`;

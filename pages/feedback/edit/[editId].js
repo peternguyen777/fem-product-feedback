@@ -18,6 +18,7 @@ import {
   DELETE_ALL_REPLIES_BY_FEEDBACK_ID,
   DELETE_ALL_COMMENTS_BY_FEEDBACK_ID,
   DELETE_FEEDBACK_BY_ID,
+  UPDATE_FEEDBACK,
 } from "../../../graphql/mutations";
 
 function EditFeedback() {
@@ -44,6 +45,10 @@ function EditFeedback() {
     refetchQueries: [GET_ALL_FEEDBACK, "getFeedbackList"],
   });
 
+  const [updateFeedback] = useMutation(UPDATE_FEEDBACK, {
+    refetchQueries: [GET_FEEDBACK_BY_ID, "getFeedback"],
+  });
+
   const {
     register,
     handleSubmit,
@@ -58,7 +63,23 @@ function EditFeedback() {
     setValue("detail", editData?.description);
   }, [data]);
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    const notification = toast.loading("Updating feedback...");
+
+    await updateFeedback({
+      variables: {
+        feedback_id: router.query.editId,
+        description: data.detail,
+        category: data.category,
+        title: data.title,
+        status: data.status,
+      },
+    });
+
+    toast.success("Feedback successfully updated!", { id: notification });
+
+    router.back();
+  };
 
   const deleteFeedbackHandler = async () => {
     const notification = toast.loading("Deleting feedback...");
@@ -88,6 +109,8 @@ function EditFeedback() {
     });
 
     toast.success("Feedback successfully deleted!", { id: notification });
+
+    router.push("/");
   };
 
   return (
