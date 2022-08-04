@@ -143,7 +143,7 @@ function NewFeedback() {
                 Choose an Option
               </option>
               <option value='ui'>UI</option>
-              <option value='ui'>UX</option>
+              <option value='ux'>UX</option>
               <option value='enhancement'>Enhancement</option>
               <option value='bug'>Bug</option>
               <option value='feature'>Feature</option>
