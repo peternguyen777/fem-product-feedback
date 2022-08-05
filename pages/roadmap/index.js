@@ -8,6 +8,7 @@ import CardRoadmap from "../../components/UI/CardRoadmap";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_FEEDBACK } from "../../graphql/queries";
+import { useSwipeable } from "react-swipeable";
 
 function Roadmap() {
   const [filterRoadmap, setFilterRoadmap] = useState("In-Progress");
@@ -26,6 +27,27 @@ function Roadmap() {
     setReqProgress(progress);
     setReqLive(live);
   }, [data]);
+
+  const handlers = useSwipeable({
+    onSwipedRight: () => {
+      if (filterRoadmap === "In-Progress") {
+        setFilterRoadmap("Planned");
+      }
+      if (filterRoadmap === "Live") {
+        setFilterRoadmap("In-Progress");
+      }
+    },
+    onSwipedLeft: () => {
+      if (filterRoadmap === "Planned") {
+        setFilterRoadmap("In-Progress");
+      }
+      if (filterRoadmap === "In-Progress") {
+        setFilterRoadmap("Live");
+      }
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
 
   return (
     <div className='flex flex-col lg:mx-auto lg:max-w-[1190px]'>
@@ -49,7 +71,7 @@ function Roadmap() {
             reqLive={reqLive}
           />
 
-          <section className='mx-6 md:hidden'>
+          <section className='mx-6 md:hidden' {...handlers}>
             <div className='my-6'>
               <h3 className='mb-1 text-lightnavy'>
                 {capitalizeFirstLetter(filterRoadmap)} (

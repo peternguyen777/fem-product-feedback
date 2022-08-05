@@ -21,7 +21,7 @@ function ProgressBar({
           Planned ({reqPlanned?.length || 0})
         </p>
         <div
-          className={`absolute -bottom-[1px] h-1 w-full bg-blue ${
+          className={`absolute -bottom-[1px] h-1 w-full bg-melon ${
             filterRoadmap !== "Planned" && `hidden`
           }`}
         />
@@ -55,7 +55,7 @@ function ProgressBar({
           Live ({reqLive?.length || 0})
         </p>
         <div
-          className={`absolute -bottom-[1px] h-1 w-full bg-blue ${
+          className={`absolute -bottom-[1px] h-1 w-full bg-cyan ${
             filterRoadmap !== "Live" && `hidden`
           }`}
         />
