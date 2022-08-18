@@ -4,6 +4,8 @@
 
 ### The application is running in demo-mode. You are automatically logged in as administrator. ###
 
+**NextJS / TailwindCSS / Supabase / Apollo Client / GraphQL / React-Hook-Form**
+
 ----
 
 The ***Product Feedback*** application is a Reddit-like forum allowing dev teams to receive community feedback for their products. Feedback suggestions are able to be made anonymously and form threads to which other users can reply and upvote. These changes can be actioned by the administrator and integrated into a live roadmap allowing community transparency for future product upgrades.
