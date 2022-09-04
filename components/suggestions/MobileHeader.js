@@ -17,7 +17,7 @@ function MobileHeader({ mobMenuOpen, setMobMenuOpen }) {
       <div className='z-10 ml-6 mr-[10px] flex h-[72px] w-full items-center justify-between'>
         <Link href='/'>
           <div className='cursor-pointer select-none'>
-            <p className='body2 text-white'>Front End Mentor</p>
+            <p className='body2 text-white'>mentr</p>
             <p className='body3 text-white opacity-75'>Feedback Board</p>
           </div>
         </Link>

@@ -50,7 +50,12 @@ function AddComment({ productData }) {
       className='mt-6 rounded-[10px] bg-white p-6'
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h3 className='mb-6 text-lightnavy'>Add Comment</h3>
+      <div className='mb-6 flex items-center justify-between'>
+        <h3 className=' text-lightnavy'>Add Comment</h3>
+        <p className='body3 cursor-pointer text-right font-normal text-lightnavy'>
+          @velvetround
+        </p>
+      </div>
       <div className='relative'>
         <textarea
           maxLength='250'

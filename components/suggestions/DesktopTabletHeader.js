@@ -28,7 +28,7 @@ function DesktopTabletHeader({
         />
         <Link href='/'>
           <div className='absolute left-6 bottom-6 z-10 cursor-pointer select-none'>
-            <h2 className='text-white'>Frontend Mentor</h2>
+            <h2 className='text-white'>mentr</h2>
             <p className='body2 text-white opacity-75'>Feedback Board</p>
           </div>
         </Link>
